@@ -59,6 +59,9 @@ import java.util.HashMap;
 2010	0	0
 2011	0	0
 2012	+1  0
+2013    0   0
+2014    0   0
+2015    +1  0
  */
 public class LeapSecondTable {
 	//static int[][] LEAP_SECOND_INDEX = {
@@ -78,39 +81,23 @@ public class LeapSecondTable {
 		LEAP_SECOND_INDEX.put(1977,	1); 
 		LEAP_SECOND_INDEX.put(1978,	1); 
 		LEAP_SECOND_INDEX.put(1979,	1); 
-		//LEAP_SECOND_INDEX.put(1980,	0);
 		LEAP_SECOND_INDEX.put(1981,	2);
 		LEAP_SECOND_INDEX.put(1982,	2);
 		LEAP_SECOND_INDEX.put(1983,	2);
-		//LEAP_SECOND_INDEX.put(1984,	0);
 		LEAP_SECOND_INDEX.put(1985,	2);
-		//LEAP_SECOND_INDEX.put(1986,	0);
 		LEAP_SECOND_INDEX.put(1987,	1);
-		//LEAP_SECOND_INDEX.put(1988,	0);
 		LEAP_SECOND_INDEX.put(1989,	1);
 		LEAP_SECOND_INDEX.put(1990,	1);
-		//LEAP_SECOND_INDEX.put(1991,	0);
 		LEAP_SECOND_INDEX.put(1992,	2);
 		LEAP_SECOND_INDEX.put(1993,	2);
 		LEAP_SECOND_INDEX.put(1994,	2);
 		LEAP_SECOND_INDEX.put(1995,	1);
-		//LEAP_SECOND_INDEX.put(1996,	0);
 		LEAP_SECOND_INDEX.put(1997,	2);
 		LEAP_SECOND_INDEX.put(1998,	1);
-		//LEAP_SECOND_INDEX.put(1999,	0);
-		//LEAP_SECOND_INDEX.put(2000,	0);
-		//LEAP_SECOND_INDEX.put(2001,	0);
-		//LEAP_SECOND_INDEX.put(2002,	0);
-		//LEAP_SECOND_INDEX.put(2003,	0);
-		//LEAP_SECOND_INDEX.put(2004,	0);
 		LEAP_SECOND_INDEX.put(2005,	1);
-		//LEAP_SECOND_INDEX.put(2006,	0);
-		//LEAP_SECOND_INDEX.put(2007,	0);
 		LEAP_SECOND_INDEX.put(2008,	1);
-		//LEAP_SECOND_INDEX.put(2009,	0);
-		//LEAP_SECOND_INDEX.put(2010,	0);
-		//LEAP_SECOND_INDEX.put(2011,	0);
 		LEAP_SECOND_INDEX.put(2012, 2);
+		LEAP_SECOND_INDEX.put(2015, 2);
 	}
 	
 	public static boolean hasLeapSecond(Iso8601Date d) {
