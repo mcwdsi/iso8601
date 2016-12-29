@@ -58,10 +58,12 @@ import java.util.HashMap;
 2009	0	0
 2010	0	0
 2011	0	0
-2012	+1  0
-2013    0   0
-2014    0   0
-2015    +1  0
+2012	+1	0
+2013	0	0
+2014	0	0
+2015	+1	0
+2016	0	+1
+
  */
 public class LeapSecondTable {
 	//static int[][] LEAP_SECOND_INDEX = {
@@ -98,6 +100,7 @@ public class LeapSecondTable {
 		LEAP_SECOND_INDEX.put(2008,	1);
 		LEAP_SECOND_INDEX.put(2012, 2);
 		LEAP_SECOND_INDEX.put(2015, 2);
+		LEAP_SECOND_INDEX.PUT(2016, 2);
 	}
 	
 	public static boolean hasLeapSecond(Iso8601Date d) {
