@@ -100,7 +100,7 @@ public class LeapSecondTable {
 		LEAP_SECOND_INDEX.put(2008,	1);
 		LEAP_SECOND_INDEX.put(2012, 2);
 		LEAP_SECOND_INDEX.put(2015, 2);
-		LEAP_SECOND_INDEX.PUT(2016, 2);
+		LEAP_SECOND_INDEX.PUT(2016, 1);
 	}
 	
 	public static boolean hasLeapSecond(Iso8601Date d) {
