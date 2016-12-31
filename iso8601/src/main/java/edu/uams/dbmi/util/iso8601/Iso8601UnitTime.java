@@ -25,6 +25,13 @@ public class Iso8601UnitTime extends Iso8601Time {
 	Unit<Duration> u;
 	int subSecond;
 	
+	public Iso8601UnitTime(long tmillis) {
+		super(tmillis);
+		setSecond((int)((tmillis % 60000L)/1000L));
+		setUnitAndSubsecond(TimeUnit.MILLISECOND, (int)(tmillis%1000L));
+		u=TimeUnit.MILLISECOND;
+	}
+	
 	public Iso8601UnitTime(int hr) {
 		super(hr);
 		u = TimeUnit.HOUR;

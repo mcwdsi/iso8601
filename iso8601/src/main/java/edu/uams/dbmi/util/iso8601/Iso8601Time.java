@@ -41,6 +41,14 @@ public abstract class Iso8601Time {
 	boolean isUTC;
 	boolean hasTz;
 	
+	public Iso8601Time(long timeInMillis) {
+		int hr = (int) (timeInMillis / 3600000L);
+		int mi = (int) ((timeInMillis % 3600000L) / 60000L);
+		IsoTimeBuilder b = new IsoUnitTimeBuilder(hr);
+		b.setMinute(mi);
+		initialize(b);
+	}
+	
 	public Iso8601Time(int hr) {
 		IsoTimeBuilder b = new IsoUnitTimeBuilder(hr);
 		initialize(b);

@@ -5,7 +5,7 @@ pom.xml
 iso8601/.classpath
 iso8601/.settings
 iso8601/.project
-iso8601/pom.xml
+iso8601/target
 iso8601/target/classes/edu/uams/dbmi/util/iso8601/InconsistentIso8601DateException.class
 iso8601/target/classes/edu/uams/dbmi/util/iso8601/Iso8601Date$DateConfiguration.class
 iso8601/target/classes/edu/uams/dbmi/util/iso8601/Iso8601Date.class
