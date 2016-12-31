@@ -1,5 +1,6 @@
 package edu.uams.dbmi.util.iso8601;
 
+
 public class Iso8601TimeZoneFormatter {
 	
 	public static class FormatOptions implements Cloneable {
@@ -57,5 +58,13 @@ public class Iso8601TimeZoneFormatter {
 			
 			return sb.toString();
 		}
+		
+		public static String formatTimeZone(int offsetInMillis) {
+			long offsetHour = offsetInMillis / 3600000L;
+			long offsetMinutes = (offsetInMillis % 3600000L) / 60000L;
+			if (offsetMinutes < 0) offsetMinutes = -offsetMinutes;
+			return formatTimeZone((int)offsetHour, (int)offsetMinutes);
+		}
+	
 	
 }

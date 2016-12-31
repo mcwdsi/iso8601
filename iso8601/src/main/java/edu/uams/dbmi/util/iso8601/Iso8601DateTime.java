@@ -176,7 +176,7 @@ public class Iso8601DateTime {
 	}
 	
 	/**
-	 * Get the calendar object that corresponds to this IS) 8601 date/time 
+	 * Get the calendar object that corresponds to this ISO 8601 date/time 
 	 * 	object.  Note that calling getDate().getCalendar() will return the
 	 * 	same instance.
 	 * 
