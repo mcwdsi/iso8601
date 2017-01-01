@@ -14,7 +14,7 @@
   */
 package edu.uams.dbmi.util.iso8601;
 
-/*
+/**
  * A key ambiguity in the standard is what a fractional hour or minute
  * 	represents.  For example, does 12.5 represent the minute 12:30, the
  *  second 12:30:00, the millisecond 12:30:00.000, or one tenth of an
@@ -30,6 +30,15 @@ package edu.uams.dbmi.util.iso8601;
  *  Thus, we need to distinguish objects that represent actual intervals
  *  vs. those that are ambiguous.  Key question next is whether we use
  *  two classes to do it, or use a single flag in this class.
+ *  
+ *  Also, note that if no time zone is specified, then there is also much
+ *  	ambiguity: the time object could represent one of ~41 times (all
+ *  	the time zones across the world end up with ~41 unique offsets 
+ *  	from UTC, including UTC (offset is zero) itself).
+ *  
+ *  THIS CLASS ASSUMES UTC WHEN NO TIME ZONE IS SPECIFIED.  Sorry folks, 
+ *  	I just can't brook the ambiguity.  Don't be ambiguous, and you'll
+ *  	never encounter unanticipated behavior!
  */
 public abstract class Iso8601Time {
 	Integer hr;
@@ -75,6 +84,10 @@ public abstract class Iso8601Time {
 		if (hasTz) {
 			setTzHour(b);
 			setTzMinute(b);
+		}  else {
+			tzHr = 0;
+			tzMin = 0;
+			isUTC = true;
 		}
 	}
 

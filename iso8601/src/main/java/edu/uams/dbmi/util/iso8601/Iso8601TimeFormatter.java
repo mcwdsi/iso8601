@@ -163,20 +163,12 @@ public class Iso8601TimeFormatter {
 		if (t.isUtcTimeZone()) {
 			formattedTime.append('Z');
 		} else if (t.isTimeZoneSpecified()) {
-			if (t.getTimeZoneHourOffset() > -1) {
-				formattedTime.append("+");
-				addIntegerComponent(t.getTimeZoneHourOffset());
-			} else {
-				addIntegerComponent(t.getTimeZoneHourOffset());
-			}
-			int tzMin = t.getTimeZoneMinuteOffset();
-			if ((tzMin == 0 && options.includeTzMinIfZero) || 
-					tzMin > 0) {
-				if (options.isExtended()) {
-					formattedTime.append(":");
-				}
-				addIntegerComponent(tzMin);
-			}
+			Iso8601TimeZoneFormatter.FormatOptions fo = 
+					new Iso8601TimeZoneFormatter.FormatOptions(
+							options.extended, options.includeTzMinIfZero);
+			formattedTime.append(
+					Iso8601TimeZoneFormatter.formatTimeZone(
+							t.getTimeZoneHourOffset(), t.getTimeZoneMinuteOffset(), fo));
 		}
 	}
 }

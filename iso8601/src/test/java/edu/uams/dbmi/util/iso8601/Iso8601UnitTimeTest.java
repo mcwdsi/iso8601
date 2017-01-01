@@ -67,4 +67,14 @@ public class Iso8601UnitTimeTest extends TestCase {
 			assertEquals(i, ut1.getSubsecond().intValue());
 		}
 	}
+	
+	@Test
+	public void testTimeZoneInfoForTimezonlessDateTime() {
+		Iso8601Date d = new Iso8601Date(Iso8601Date.DateConfiguration.YEAR_MONTH_DAY, 2017, 01, 01);
+		Iso8601UnitTime t = new Iso8601UnitTime(12, 00);
+		
+		Iso8601DateTime dt = new Iso8601DateTime(d, t);
+		System.out.println(dt.getTime().getTimeZoneHourOffset());
+		System.out.println(dt.getTime().getTimeZoneMinuteOffset());
+	}
 }

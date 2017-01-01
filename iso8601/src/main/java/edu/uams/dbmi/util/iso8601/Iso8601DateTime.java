@@ -35,7 +35,14 @@ public class Iso8601DateTime {
 	 * 	getUnit() returns TimeUnit.MILLISECOND.
 	 */
 	public Iso8601DateTime() {
-		c = (GregorianCalendar)GregorianCalendar.getInstance();
+		buildFromCalendar((GregorianCalendar)GregorianCalendar.getInstance());
+	}
+	
+	public Iso8601DateTime(GregorianCalendar gc) {
+		buildFromCalendar(gc);
+	}
+
+	private void buildFromCalendar(GregorianCalendar c) {
 		date = new Iso8601Date(DateConfiguration.YEAR_MONTH_DAY, 
 				c.get(Calendar.YEAR), c.get(Calendar.MONTH)+1, 
 				c.get(Calendar.DAY_OF_MONTH));
@@ -48,6 +55,7 @@ public class Iso8601DateTime {
 		tb.setTimeZoneOffsetHour(tzOff[0]);
 		tb.setTimeZoneOffsetMinute(tzOff[1]);
 		time = new Iso8601UnitTime(tb);
+		this.c = (GregorianCalendar)c.clone();
 	}
 	
 	public Iso8601DateTime(Iso8601Date date, Iso8601Time time) {
@@ -74,20 +82,31 @@ public class Iso8601DateTime {
 	private void buildCalendar() {
 		int offMillis = time.getTimeZoneHourOffset() * 3600000;
 		offMillis += time.getTimeZoneMinuteOffset() * 60000;
-		String[] tzIds = TimeZone.getAvailableIDs(offMillis);
-		if (tzIds != null && tzIds.length > 0) {
-			TimeZone tz = TimeZone.getTimeZone(tzIds[0]);
-			//c.setTimeZone(tz);
-			c = (GregorianCalendar)Calendar.getInstance(tz);
-			c.set(date.getYear(), date.getMonth()-1, date.getDayOfMonth());
+		TimeZone tz = null;
+		//if time zone offset is zero, we're going to universally use UTC
+		if (offMillis == 0) {
+			tz = TimeZone.getTimeZone("UTC");
+		} else {
+			//otherwise, just get first time zone available.
+			String[] tzIds = TimeZone.getAvailableIDs(offMillis);
+			if (tzIds != null && tzIds.length > 0) {
+				tz = TimeZone.getTimeZone(tzIds[0]);
+				//c.setTimeZone(tz);
+			}
 		}
+		c = (GregorianCalendar)Calendar.getInstance(tz);
+		c.set(date.getYear(), date.getMonth()-1, date.getDayOfMonth(), 0, 0, 0);
+		c.set(Calendar.MILLISECOND, 0);
 		if (time.getHour() == 24) {
 			c.add(Calendar.DAY_OF_MONTH, 1); 
-			c.set(Calendar.HOUR, 0);
+			c.set(Calendar.HOUR, 0); //Iso8601Time class ensures that if hour is 24, everything else is zero
 			c.set(Calendar.MINUTE, 0);
 			c.set(Calendar.SECOND, 0);
 			c.set(Calendar.MILLISECOND, 0);
 			time.hr = 0;
+			
+			//we're just going to kludge anything we get as hr == 24 to something 
+			// with the next day
 			date = new Iso8601Date(DateConfiguration.YEAR_MONTH_DAY, 
 					c.get(Calendar.YEAR), c.get(Calendar.MONTH)+1,
 					c.get(Calendar.DAY_OF_MONTH));
@@ -194,7 +213,9 @@ public class Iso8601DateTime {
 	 * 				ISO8601 date/time
 	 */
 	public Calendar getCalendar() {
-		return c;
+		//we don't want the calling function/method to change our 
+		// Calendar out from under us!!
+		return (Calendar) c.clone();
 	}
 	
 	protected int[] getTzHourMinOffsetForCalendar(GregorianCalendar c) {
