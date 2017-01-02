@@ -583,7 +583,7 @@ public class Iso8601TimeParserTest extends TestCase {
 		assertEquals(t.getHour(), hr);
 		
 		if (t.isTimeZoneSpecified() && isUtc) assertTrue(t.isUtcTimeZone());
-		else assertFalse(t.isUtcTimeZone());
+		else assertFalse(t.isTimeZoneSpecified() && t.isUtcTimeZone());
 		
 		if (tzHour != null) {
 			assertEquals(t.getTimeZoneHourOffset(), tzHour.intValue());
