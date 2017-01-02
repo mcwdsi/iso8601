@@ -87,7 +87,6 @@ public abstract class Iso8601Time {
 		}  else {
 			tzHr = 0;
 			tzMin = 0;
-			isUTC = true;
 		}
 	}
 

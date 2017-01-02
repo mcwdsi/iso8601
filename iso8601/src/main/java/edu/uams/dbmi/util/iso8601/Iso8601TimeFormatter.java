@@ -119,7 +119,7 @@ public class Iso8601TimeFormatter {
 			}
 		}
 		
-		addTimeZone(t);
+		if (t.isTimeZoneSpecified()) addTimeZone(t);
 		
 		
 		return formattedTime.toString();
