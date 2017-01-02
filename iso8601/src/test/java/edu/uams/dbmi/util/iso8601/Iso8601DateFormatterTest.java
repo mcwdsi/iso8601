@@ -70,6 +70,8 @@ public class Iso8601DateFormatterTest extends TestCase {
 				basicTxt = yrTxt + moTxt + daTxt;
 				extendedTxt = yrTxt + "-" + moTxt + "-" + daTxt;
 				break;
+			default:
+				throw new IllegalArgumentException("This method doesn't handle option:  " + dc.toString());
 		}
 		
 		fo.setConfiguration(dc);
@@ -187,6 +189,8 @@ public class Iso8601DateFormatterTest extends TestCase {
 				basicTxt = wkCalYrTxt + "W" + weTxt + daTxt;
 				extendedTxt = wkCalYrTxt + "-W" + weTxt + "-" + daTxt;
 				break;
+			default:
+				throw new IllegalArgumentException("This method doesn't handle option:  " + dc.toString());
 		}
 		
 		fo.setConfiguration(dc);
@@ -282,6 +286,8 @@ public class Iso8601DateFormatterTest extends TestCase {
 				basicTxt = yrTxt + dyTxt;
 				extendedTxt = yrTxt + "-" + dyTxt;
 				break;
+			default:
+				throw new IllegalArgumentException("This method doesn't handle option:  " + dc.toString());
 		}
 		
 		fo.setConfiguration(dc);
