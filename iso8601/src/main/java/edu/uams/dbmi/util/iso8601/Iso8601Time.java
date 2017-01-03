@@ -167,7 +167,7 @@ public abstract class Iso8601Time {
 	}
 	
 	public boolean isUtcTimeZone() {
-		return isUTC;
+		return hasTz && isUTC;
 	}
 	
 	@Override
