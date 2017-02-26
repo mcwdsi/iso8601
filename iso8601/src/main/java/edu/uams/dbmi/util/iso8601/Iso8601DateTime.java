@@ -54,6 +54,9 @@ public class Iso8601DateTime {
 		int[] tzOff = getTzHourMinOffsetForCalendar(c);
 		tb.setTimeZoneOffsetHour(tzOff[0]);
 		tb.setTimeZoneOffsetMinute(tzOff[1]);
+		if (tzOff[0] == 0 && tzOff[1] == 0) {
+			tb.isUtc = true;
+		}
 		time = new Iso8601UnitTime(tb);
 		this.c = (GregorianCalendar)c.clone();
 	}

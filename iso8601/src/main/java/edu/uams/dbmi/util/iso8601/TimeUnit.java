@@ -19,14 +19,14 @@ import javax.measure.unit.BaseUnit;
 import javax.measure.unit.Unit;
 
 public class TimeUnit {
-	static final BaseUnit<Duration> SECOND = new BaseUnit<Duration>("s");
-	static final Unit<Duration> DECISECOND = SECOND.divide(10);
-	static final Unit<Duration> CENTISECOND = SECOND.divide(100);
-	static final Unit<Duration> MILLISECOND = SECOND.divide(1000);
-	static final Unit<Duration> SECOND_MIN_4 = SECOND.divide(10000);
-	static final Unit<Duration> MICROSECOND = MILLISECOND.divide(1000);
-	static final Unit<Duration> NANOSECOND = MICROSECOND.divide(1000);
+	public static final BaseUnit<Duration> SECOND = new BaseUnit<Duration>("s");
+	public static final Unit<Duration> DECISECOND = SECOND.divide(10);
+	public static final Unit<Duration> CENTISECOND = SECOND.divide(100);
+	public static final Unit<Duration> MILLISECOND = SECOND.divide(1000);
+	public static final Unit<Duration> SECOND_MIN_4 = SECOND.divide(10000);
+	public static final Unit<Duration> MICROSECOND = MILLISECOND.divide(1000);
+	public static final Unit<Duration> NANOSECOND = MICROSECOND.divide(1000);
 	
-	static final Unit<Duration> MINUTE = SECOND.times(60);
-	static final Unit<Duration> HOUR = SECOND.times(3600);
+	public static final Unit<Duration> MINUTE = SECOND.times(60);
+	public static final Unit<Duration> HOUR = SECOND.times(3600);
 }
