@@ -63,6 +63,8 @@ import java.util.HashMap;
 2014	0	0
 2015	+1	0
 2016	0	+1
+2017	0	0
+2018	0	
 
  */
 public class LeapSecondTable {
